@@ -2,34 +2,29 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">Quiz Question</Navbar.Brand>
+                <NavLink to="/" className="navbar-brand">Quiz Question</NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/users" className='nav-link'>Users</Link>
-                        <Link to="/admin" className='nav-link'>Admin</Link>
-
-                        {/* <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="users">User</Nav.Link>
-                        <Nav.Link href="admin">Admin</Nav.Link> */}
-
+                        <NavLink to="/" className="nav-link">Home</NavLink>
+                        <NavLink to="/users" className='nav-link'>Users</NavLink>
+                        <NavLink to="/admin" className='nav-link'>Admin</NavLink>
                     </Nav>
                     <Nav>
-                        <NavDropdown title="Setting" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Logout
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                        <button className='btn-login'>Login</button>
+                        <button className='btn-signup'>Sign up</button>
+                        {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
+                            <NavDropdown.Item >Login</NavDropdown.Item>
+                            <NavDropdown.Item >Logout</NavDropdown.Item>
+                            <NavDropdown.Item >Profile</NavDropdown.Item>
 
-                        </NavDropdown>
+                        </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -7,3 +7,97 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@media (min-width: 1200px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1800px !important;
+  }
+}
+
+.app-container {
+  .header-container {
+
+    .btn-login {
+      border-radius: 6px;
+      margin-right: 15px;
+      padding: 0 20px;
+      height: 50px;
+      border: 1px solid #2e2828;
+    }
+
+    .btn-signup {
+      border-radius: 6px;
+      background: #5b5858;
+      color: white;
+      padding: 0 20px;
+      height: 50px;
+
+      &:hover {
+        background: black;
+      }
+    }
+
+
+
+    .navbar {
+      padding-top: 25px;
+      z-index: 10;
+      // opacity: 0, 6;
+      background-color: rgba(0, 0, 0, 0) !important;
+      font-size: 25px;
+
+      .nav-link {
+        &.active {
+          color: #0355FF;
+        }
+      }
+    }
+  }
+
+  .main-container {}
+
+  .homepage-container {
+    .homepage-content {
+      padding: 100px;
+      position: relative;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      .title-1 {
+        font-size: 55px;
+        font-weight: 600;
+
+      }
+
+      .title-2 {
+        font-size: 35px;
+      }
+
+      .click666 {
+        border-radius: 6px;
+        background: #2c2b2b;
+        color: white;
+        padding: 0 20px;
+        height: 50px;
+
+        &:hover {
+          background: black;
+        }
+      }
+    }
+  }
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+
+}
