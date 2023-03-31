@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BsPlusCircle } from 'react-icons/bs'
-import axios from 'axios';
+import { toast } from 'react-toastify';
+import { PostCreateNewUser } from "../../../Services/apiServices"
+
 const ModalCreateUser = (props) => {
     const { show, setShow } = props;
-    // const [show, setShow] = useState(false);
 
     const handleClose = () => {
         setShow(false)
@@ -15,6 +16,7 @@ const ModalCreateUser = (props) => {
         setRole("USER")
         setPreviewImage("")
     };
+
     const handleShow = () => setShow(true);
 
     const [email, setEmail] = useState("");
@@ -32,33 +34,39 @@ const ModalCreateUser = (props) => {
             setPreviewImage('')
         }
     }
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
 
     const handleSubmitCreateUsers = async () => {
-        // alert('clickme')
-        // let data = {
-        //     email: email,
-        //     password: password,
-        //     username: username,
-        //     role: role,
-        //     userImage: image,
-        // }
-        // console.log(data);
-        const data = new FormData();
-        data.append('email', email);
-        data.append('password', password);
-        data.append('username', username);
-        data.append('role', role);
-        data.append('userImage', image);
 
-        let res = await axios.post('http://localhost:8081/api/v1/participant', data)
-        console.log('check res', res);
+        const isValidEmail = validateEmail(email);
+        if (!isValidEmail) {
+            toast.error('invalid email')
+            return;
+        }
+        if (!password) {
+            toast.error("missing password")
+            return;
+        }
+
+        let data = await PostCreateNewUser(email, password, username, role, image)
+        console.log('check res', data);
+        if (data && data.EC === 0) {
+            toast.success(data.EM);
+            handleClose();
+            await props.fetchListUser();
+        }
+        if (data && data.EC !== 0) {
+            toast.error(data.EM)
+        }
     }
     return (
         <>
-            {/* <Button variant="primary" onClick={handleShow} >
-                Demo
-            </Button> */}
-
             <Modal
                 show={show}
                 onHide={handleClose}

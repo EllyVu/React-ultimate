@@ -31,16 +31,15 @@ const SideBar = (props) => {
                             padding: '24px',
                             textTransform: 'uppercase',
                             fontWeight: 'bold',
-                            fontSize: 20,
+                            fontSize: 25,
                             letterSpacing: '1px',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
-                            gap: '5px'
+
                         }}
                     >
                         <FaReact size={'2.5em'} color={'00bfff'} pad />
-
                         Elly Vu
                     </div>
                 </SidebarHeader>
@@ -66,7 +65,6 @@ const SideBar = (props) => {
                             <MenuItem>Quản lý người dùng</MenuItem>
                             <MenuItem>Quản lý câu hỏi</MenuItem>
                         </SubMenu>
-
                     </Menu>
                 </SidebarContent>
 
