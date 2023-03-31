@@ -5,10 +5,15 @@ import TableUser from "./TableUser";
 import { useEffect } from "react"
 import { useState } from "react"
 import { getAllUser } from "../../../Services/apiServices"
+import ModalUpdateUser from "./ModalUpdateUser";
 const ManageUser = (props) => {
 
     const [showModalCreateUser, setShowModalCreateUSer] = useState(false);
+    const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
+    const [dataUpdate, setDataUpdate] = useState({});
     const [listUser, setListUser] = useState([])
+
+
     useEffect(() => {
         fetchListUser()
     }, [])
@@ -18,6 +23,11 @@ const ManageUser = (props) => {
         if (res.EC === 0) {
             setListUser(res.DT)
         }
+    }
+
+    const handleClickButtonUpdate = (user) => {
+        setShowModalUpdateUser(true)
+        setDataUpdate(user)
     }
     return (
         <div className="manage-user-container">
@@ -31,13 +41,21 @@ const ManageUser = (props) => {
                         <BsPlusCircle />   Add new user</button>
                 </div>
                 <div className="table-users-container">
-                    <TableUser listUser={listUser} />
+                    <TableUser listUser={listUser}
+                        handleClickButtonUpdate={handleClickButtonUpdate}
+                    />
                 </div>
                 <ModalCreateUser
                     show={showModalCreateUser}
                     setShow={setShowModalCreateUSer}
                     fetchListUser={fetchListUser}
                 />
+                <ModalUpdateUser
+                    show={showModalUpdateUser}
+                    setShow={setShowModalUpdateUser}
+                    dataUpdate={dataUpdate}
+                />
+
             </div>
 
         </div >
