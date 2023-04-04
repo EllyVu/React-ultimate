@@ -5,7 +5,7 @@ const TableUser = (props) => {
 
     return (
         <>
-            <h1>TableUser</h1>
+            <h1>Danh sách người dùng</h1>
             <table className="table table-hover table-bordered table-striped">
                 <thead>
                     <tr>
@@ -26,7 +26,12 @@ const TableUser = (props) => {
                                     <td>{item.email}</td>
                                     <td>{item.role}</td>
                                     <td>
-                                        <button className="btn btn-info">View</button>
+                                        <button
+                                            className="btn btn-info"
+                                            onClick={() => props.handleClickButtonView()}
+                                        >
+                                            View
+                                        </button>
                                         <button
                                             className="btn btn-warning"
                                             onClick={() => props.handleClickButtonUpdate(item)}
@@ -41,7 +46,7 @@ const TableUser = (props) => {
                     }
                     {listUser && listUser.length === 0 &&
                         <tr>
-                            <td colSpan={'4'}>Not Found Data</td>
+                            <td colSpan={'5'}>Not Found Data</td>
                         </tr>}
                 </tbody>
             </table>
