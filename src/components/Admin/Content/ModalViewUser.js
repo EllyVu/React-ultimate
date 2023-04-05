@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { BsPlusCircle } from 'react-icons/bs'
-import { toast } from 'react-toastify';
-import { PostCreateNewUser } from "../../../Services/apiServices"
-
+import _ from 'lodash';
 const ModalViewUser = (props) => {
-    const { show, setShow } = props;
+    const { show, setShow, dataUser } = props;
 
     const handleClose = () => {
         setShow(false)
@@ -27,45 +24,21 @@ const ModalViewUser = (props) => {
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("")
 
-    // const handleUploadImage = (event) => {
-    //     if (event.target && event.target.files && event.target.files[0]) {
-    //         setPreviewImage(URL.createObjectURL(event.target.files[0]))
-    //         setImage(event.target.files[0])
-    //     } else {
-    //         setPreviewImage('')
-    //     }
-    // }
-    // const validateEmail = (email) => {
-    //     return String(email)
-    //         .toLowerCase()
-    //         .match(
-    //             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    //         );
-    // };
 
-    // const handleSubmitCreateUsers = async () => {
+    useEffect(() => {
+        if (!_.isEmpty(dataUser)) {
+            //View User
+            setEmail(dataUser.email)
+            setUsername(dataUser.username)
+            setRole(dataUser.role)
+            setImage("")
+            if (dataUser.image) {
+                setPreviewImage(`data:image/jpeg;base64,${dataUser.image}`)
 
-    //     const isValidEmail = validateEmail(email);
-    //     if (!isValidEmail) {
-    //         toast.error('invalid email')
-    //         return;
-    //     }
-    //     if (!password) {
-    //         toast.error("missing password")
-    //         return;
-    //     }
+            }
+        }
+    }, [dataUser]);
 
-    //     let data = await PostCreateNewUser(email, password, username, role, image)
-    //     console.log('check res', data);
-    //     if (data && data.EC === 0) {
-    //         toast.success(data.EM);
-    //         handleClose();
-    //         await props.fetchListUser();
-    //     }
-    //     if (data && data.EC !== 0) {
-    //         toast.error(data.EM)
-    //     }
-    // }
     return (
         <>
             <Modal
@@ -85,6 +58,7 @@ const ModalViewUser = (props) => {
                             <input
                                 type="email"
                                 className="form-control"
+                                disabled
                                 value={email}
                                 onChange={(event) => setEmail(event.target.value)}
                             />
@@ -94,6 +68,7 @@ const ModalViewUser = (props) => {
                             <input
                                 type="password"
                                 className="form-control"
+                                disabled
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                             />
@@ -103,6 +78,7 @@ const ModalViewUser = (props) => {
                             <input
                                 type="text"
                                 className="form-control"
+                                disabled
                                 value={username}
                                 onChange={(event) => setUsername(event.target.value)}
                             />
@@ -115,15 +91,10 @@ const ModalViewUser = (props) => {
                             </select>
                         </div>
                         <div className='col-md-12'>
-                            {/* 
-                            <label className="form-label label-upload" htmlFor='labelUpload'>
-                                <BsPlusCircle /> Upload File Image
-                            </label> */}
                             <input
                                 type='file'
                                 id='labelUpload'
                                 hidden
-                            // onChange={(event) => handleUploadImage(event)}
                             />
                         </div>
                         <div className='col-md-12 img-preview'>
@@ -133,11 +104,10 @@ const ModalViewUser = (props) => {
                                 <span>Preview Image</span>
                             }
                         </div>
-
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="btn  btn-info" onClick={handleClose}>
+                    <Button variant="btn  btn-success" onClick={handleClose}>
                         Close
                     </Button>
                 </Modal.Footer>

@@ -5,7 +5,7 @@ const TableUser = (props) => {
 
     return (
         <>
-            <h1>Danh sách người dùng</h1>
+            <h1 style={{ textAlign: 'center' }}>Danh sách người dùng</h1>
             <table className="table table-hover table-bordered table-striped">
                 <thead>
                     <tr>
@@ -28,7 +28,7 @@ const TableUser = (props) => {
                                     <td>
                                         <button
                                             className="btn btn-info"
-                                            onClick={() => props.handleClickButtonView()}
+                                            onClick={() => props.handleClickButtonView(item)}
                                         >
                                             View
                                         </button>
@@ -38,7 +38,12 @@ const TableUser = (props) => {
                                         >
                                             Edit
                                         </button>
-                                        <button className="btn btn-danger">Delete</button>
+                                        <button
+                                            className="btn btn-danger"
+                                            onClick={() => props.handleClickButtonDeleteUser(item)}
+                                        >
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                             )

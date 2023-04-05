@@ -13,6 +13,7 @@ import sidebarBg from '../../assets/bgsidebar.jpg';
 import { MdDashboard } from 'react-icons/md';
 import './SideBar.scss'
 import { Link } from 'react-router-dom';
+import { FiUsers } from 'react-icons/fi'
 
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -39,7 +40,7 @@ const SideBar = (props) => {
 
                         }}
                     >
-                        <FaReact size={'2.5em'} color={'00bfff'} pad />
+                        <FaReact size={'2em'} color={'00bfff'} style={{ margin: "10px" }} />
                         Elly Vu
                     </div>
                 </SidebarHeader>
@@ -58,7 +59,7 @@ const SideBar = (props) => {
                             icon={<FaGem />}
                             title="Features"
                         >
-                            <MenuItem>
+                            <MenuItem icon={<FiUsers color={'2596be'} size={"1.5em"} />}>
                                 Quản lý User
                                 <Link to='/admin/manage-users' />
                             </MenuItem>

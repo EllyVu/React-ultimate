@@ -17,7 +17,7 @@ const ModalUpdateUser = (props) => {
         setRole("USER")
         setImage("")
         setPreviewImage("")
-        props.ResetUpdateData();
+        props.ResetUpdateData()
     };
 
     const handleShow = () => setShow(true);
