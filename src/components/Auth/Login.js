@@ -13,6 +13,11 @@ const Login = (props) => {
     const handleBackHomePage = () => {
         navigate('/');
     }
+
+    const handleSignUp = () => {
+        navigate('/register')
+    }
+
     const HandleonClickLogin = async () => {
         //validate
 
@@ -31,7 +36,7 @@ const Login = (props) => {
         <div className="login-container">
             <div className='header'>
                 <span>      Don't have an account yet?</span>
-                <button>Sign up</button>
+                <button onClick={() => handleSignUp()} >Sign up</button>
             </div>
             <div className='title col-4 mx-auto'>
                 EllyVu
@@ -59,9 +64,7 @@ const Login = (props) => {
                     />
                 </div>
                 <span className='forgot-password'>
-
                     Forgot password ?
-
                 </span>
                 <div>
                     <button

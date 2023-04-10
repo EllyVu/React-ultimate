@@ -1,0 +1,31 @@
+.register-container {
+    .form-title {
+        font-size: 40px;
+        color: rgb(14, 225, 109);
+        text-align: center;
+        padding: 60px 0 70px 0;
+        font-weight: 800;
+
+    }
+
+    .content-form {
+        input {
+            margin-bottom: 30px;
+            margin-top: 3px;
+            height: 45px;
+        }
+
+        button {
+            width: 30%;
+            height: 40px;
+            margin: 0 100px 0 150px;
+            border-radius: 15px;
+            color: white;
+            background: #000;
+            border: none;
+            font-size: 22px;
+        }
+    }
+
+
+}
