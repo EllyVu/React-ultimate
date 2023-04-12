@@ -8,6 +8,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (max-width: 739px) {}
+
 @media (min-width: 1200px) {
 
   .container,
@@ -28,6 +30,7 @@ body {
       padding: 0 20px;
       height: 50px;
       border: 1px solid #2e2828;
+      width: 128px;
     }
 
     .btn-signup {
