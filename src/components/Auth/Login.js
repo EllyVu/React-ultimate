@@ -3,13 +3,18 @@ import './Login.scss'
 import { useNavigate } from 'react-router-dom';
 import { postLogin } from '../../Services/apiServices'
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { doLogin } from '../../redux/action/userAction';
+import { ImSpinner9 } from 'react-icons/im'
 
 const Login = (props) => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [isLoading, setIsLoadingData] = useState(false);
+
     const handleBackHomePage = () => {
         navigate('/');
     }
@@ -19,12 +24,14 @@ const Login = (props) => {
     }
 
     const HandleonClickLogin = async () => {
-        //validate
 
+        setIsLoadingData(true)
         //submitApis
         let data = await postLogin(email, password)
         if (data && data.EC === 0) {
             toast.success(data.EM);
+            dispatch(doLogin(data))
+            setIsLoadingData(false)
             navigate('/')
         }
         if (data && +data.EC !== 0) {
@@ -70,8 +77,10 @@ const Login = (props) => {
                     <button
                         className='btn-submit'
                         onClick={() => HandleonClickLogin()}
+                        disabled={isLoading}
                     >
-                        Login with ELly
+                        {isLoading === true && <ImSpinner9 size={'1em'} className="loader-icon" />}
+                        <span>Login with ELly</span>
                     </button>
                 </div>
                 <div className='text-center' onClick={() => handleBackHomePage()}>
