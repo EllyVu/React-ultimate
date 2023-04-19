@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import VideoHomePage from "../../assets/video-homepage.mp4"
 import { useSelector } from "react-redux";
 const HomePage = (props) => {
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
-    const account = useSelector(state => state.user.account);
+
+
+    const navigate = useNavigate();
 
     return (
         <div className="homepage-container">
@@ -19,10 +22,16 @@ const HomePage = (props) => {
                 <div className="title-2">
                     Muốn hỏi gì nào
                 </div>
-                <div className="click555">
-                    <button className="click666" >
-                        Bắt đầu ngay. Tất cả đều miễn phí
-                    </button>
+                <div className="title-3">
+                    {isAuthenticated === false ?
+                        <button className="btn-startnow" onClick={() => navigate('/login')} >
+                            Bắt đầu ngay. Tất cả đều miễn phí
+                        </button>
+                        :
+                        <button className="btn-startnow" onClick={() => navigate('/users')} >
+                            Doing Quiz Now
+                        </button>}
+
                 </div>
             </div>
         </div>
