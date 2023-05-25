@@ -14,37 +14,40 @@
             font-weight: 600;
         }
 
-        .question-content {
-            text-align: center;
+        .question-body {
 
-            .questions {
-                font-size: 25px;
-                font-weight: 600;
-                padding: 20px 0;
-            }
 
-            .answer {
-                .a-child {
-                    text-align: left;
-                    padding-left: 50px
-                }
-            }
-        }
-
-        .question-image {
-            margin: 30px 0;
-            width: 200px;
-            height: 200px;
-
-            img {
-                text-align: right;
-                width: 200px;
+            .question-image {
+                display: flex;
+                justify-content: center;
                 height: 200px;
 
+
+                img {
+                    height: 200px;
+
+                }
             }
+
+            .question-content {
+                // display: flex;
+                justify-content: center;
+
+                .questions {
+                    font-size: 25px;
+                    font-weight: 600;
+                    padding: 20px 0;
+                }
+
+                .answer {
+                    .a-child {
+                        text-align: left;
+                        padding-left: 50px
+                    }
+                }
+            }
+
         }
-
-
 
         .footer {
             display: flex;
