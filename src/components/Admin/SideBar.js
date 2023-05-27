@@ -12,11 +12,13 @@ import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart, FaRe
 import sidebarBg from '../../assets/bgsidebar.jpg';
 import { MdDashboard } from 'react-icons/md';
 import './SideBar.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiUsers } from 'react-icons/fi'
 
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
+    const Navigate = useNavigate();
+
     return (
         <>
             <ProSidebar
@@ -41,7 +43,7 @@ const SideBar = (props) => {
                         }}
                     >
                         <FaReact size={'2em'} color={'00bfff'} style={{ margin: "10px" }} />
-                        Elly Vu
+                        <span onClick={() => Navigate('/')}> Elly Vu</span>
                     </div>
                 </SidebarHeader>
 
@@ -63,7 +65,10 @@ const SideBar = (props) => {
                                 Quản lý User
                                 <Link to='/admin/manage-users' />
                             </MenuItem>
-                            <MenuItem>Quản lý người dùng</MenuItem>
+                            <MenuItem>
+                                Quản lý bài quiz
+                                <Link to='/admin/manage-quizzes' />
+                            </MenuItem>
                             <MenuItem>Quản lý câu hỏi</MenuItem>
                         </SubMenu>
                     </Menu>
