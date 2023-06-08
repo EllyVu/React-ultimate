@@ -34,7 +34,7 @@ const TableUserPaginate = (props) => {
                                     <td>{item.username}</td>
                                     <td>{item.email}</td>
                                     <td>{item.role}</td>
-                                    <td>
+                                    <td style={{ display: "flex", gap: "25px" }}>
                                         <button
                                             className="btn btn-info"
                                             onClick={() => props.handleClickButtonView(item)}
@@ -92,4 +92,4 @@ const TableUserPaginate = (props) => {
     )
 }
 
-export default TableUserPaginate
+export default TableUserPaginate;
